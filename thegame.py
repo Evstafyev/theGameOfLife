@@ -3,7 +3,7 @@ import turtle
 
 cells = {}  # словарь для клеток игрового поля
 
-def square(x, y, size, name):
+def cell(x, y, size, name):
     """Метод для создания клеточных автоматов. 
     На вход принимаются координаты ячеек, длинна шага 
     и имя ячейки(цвет) в зависмости от заданной роли(мертвая/живая)"""
@@ -51,7 +51,7 @@ def draw():
     turtle.clear()
     for(x, y), alive in cells.items():
         color = 'black' if alive else 'white'
-        square(x, y, 10, color)
+        cell(x, y, 10, color)
     turtle.update()
     turtle.ontimer(draw, 100)
 
