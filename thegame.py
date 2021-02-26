@@ -1,5 +1,6 @@
-from random import choice
+"""Главный скрипт проекта."""
 import turtle
+from random import choice
 
 cells = {}  # словарь для клеток игрового поля
 
@@ -60,10 +61,11 @@ def draw():
     turtle.ontimer(draw, 100)
 
 
-turtle.title("The Game of Life")
-turtle.setup(500, 500)
-turtle.hideturtle()
-turtle.tracer(False)
-initialise()
-draw()
-turtle.done()
+if __name__ == '__main__':
+    turtle.title("The Game of Life")
+    turtle.setup(500, 500)
+    turtle.hideturtle()
+    turtle.tracer(False)
+    initialise()
+    draw()
+    turtle.done()
