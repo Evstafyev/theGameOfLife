@@ -1,0 +1,10 @@
+[flake8]
+# see https://flake8.pycqa.org/en/latest/user/configuration.html
+
+exclude =
+    .git,
+    .vscode,
+    __pycache__,
+    venv
+max-complexity = 10
+max-line-length = 120

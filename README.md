@@ -32,10 +32,10 @@ PS > .\venv\Scripts\activate
 (venv) PS > python -m pip install -r .\dev-requirements.txt
 ```
 
-После чего можно будет запускать линтер [pylint](https://pypi.org/project/pylint/), подключив его либо в среду разработки, либо запуская через командную строку:
+После чего можно будет запускать комплексный линтер [flake8](https://pypi.org/project/flake8/), подключив его либо в среду разработки, либо запуская через командную строку:
 
 ```powershell
-> pylint .\thegame.py
+> flake8 .
 ```
 
 При этом на сервере через механизм [GitHub Actions](https://github.com/features/actions) запускается автоматический прогон линтера при каждом push.
@@ -43,4 +43,6 @@ PS > .\venv\Scripts\activate
 В VS Code для интерактивной работы линтера необходимо (через команды `CTRL + SHIFT + P`):
 
 1. `Python: Select interpreter` выбрать тот, что в созданном `.\venv`;
-2. `Python: Select linter`, выбрать `pylint`.
+2. `Python: Select linter`, выбрать `flake8`.
+
+Конфигурирование `flake8` производится в файле `.flake8`.
