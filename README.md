@@ -46,3 +46,5 @@ PS > .\venv\Scripts\activate
 2. `Python: Select linter`, выбрать `flake8`.
 
 Конфигурирование `flake8` производится в файле `.flake8`.
+
+Для более строгой проверки кода можно дополнительно установить [wemake-python-styleguide](https://wemake-python-stylegui.de/en/latest/pages/usage/configuration.html), который расширяет возможности `flake8`.
