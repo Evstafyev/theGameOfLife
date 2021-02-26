@@ -3,9 +3,10 @@ import turtle
 
 cells = {}  # словарь для клеток игрового поля
 
+
 def cell(x, y, size, name):
-    """Метод для создания клеточных автоматов. 
-    На вход принимаются координаты ячеек, длинна шага 
+    """Метод для создания клеточных автоматов.
+    На вход принимаются координаты ячеек, длинна шага
     и имя ячейки(цвет) в зависмости от заданной роли(мертвая/живая)"""
     turtle.up()
     turtle.goto(x, y)
@@ -16,6 +17,7 @@ def cell(x, y, size, name):
         turtle.forward(size)
         turtle.left(90)
     turtle.end_fill()
+
 
 def step():
     """Метод реализует процесс смены поколений(шагов) клеточных автоматов"""
@@ -36,6 +38,7 @@ def step():
         elif count == 3:                # условие рождения новой клетки при налии трех соседей
             cells[cell] = True
 
+
 def initialise():
     """Метод для случайной инциализации координат клеточных автоматов"""
     for x in range(-300, 300, 10):
@@ -44,6 +47,7 @@ def initialise():
     for x in range(-50, 50, 10):
         for y in range(-50, 50, 10):
             cells[x, y] = choice([True, False])
+
 
 def draw():
     """Метод для отрисовки клеток"""
@@ -54,6 +58,7 @@ def draw():
         cell(x, y, 10, color)
     turtle.update()
     turtle.ontimer(draw, 100)
+
 
 turtle.title("The Game of Life")
 turtle.setup(500, 500)
