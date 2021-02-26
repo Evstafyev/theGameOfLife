@@ -13,7 +13,7 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.8
-    - name: Show current directory:
+    - name: Show current directory content
       run: |
         ls -la
     - name: Install dependencies
