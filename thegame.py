@@ -15,7 +15,7 @@ def initialize() -> None:
             cells[x, y] = choice([True, False])
 
 
-def draw():
+def draw() -> None:
     """Процедура для отрисовки клеток."""
     step()
     turtle.clear()
@@ -26,7 +26,7 @@ def draw():
     turtle.ontimer(draw, 100)
 
 
-def step():
+def step() -> None:
     """Процедура реализует процесс смены поколений (шагов) клеточных автоматов."""
     neighbours = {}  # словарь для определения соседских клеток
 
@@ -46,8 +46,8 @@ def step():
             cells[cell] = True
 
 
-def cell(x, y, size, name):
-    """Функция для создания клеточных автоматов.
+def cell(x: int, y: int, size: int, name: str) -> None:
+    """Процедура для создания клеточных автоматов.
 
     На вход принимаются координаты ячеек, длинна шага
     и имя ячейки(цвет) в зависмости от заданной роли(мертвая/живая)"""
