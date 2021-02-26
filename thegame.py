@@ -5,23 +5,29 @@ from random import choice
 cells = {}  # словарь для клеток игрового поля
 
 
-def cell(x, y, size, name):
-    """Метод для создания клеточных автоматов.
-    На вход принимаются координаты ячеек, длинна шага
-    и имя ячейки(цвет) в зависмости от заданной роли(мертвая/живая)"""
-    turtle.up()
-    turtle.goto(x, y)
-    turtle.down()
-    turtle.color(name)
-    turtle.begin_fill()
-    for count in range(4):
-        turtle.forward(size)
-        turtle.left(90)
-    turtle.end_fill()
+def initialize() -> None:
+    """Процедура для случайной инциализации координат клеточных автоматов."""
+    for x in range(-300, 300, 10):
+        for y in range(-300, 300, 10):
+            cells[x, y] = False
+    for x in range(-50, 50, 10):
+        for y in range(-50, 50, 10):
+            cells[x, y] = choice([True, False])
+
+
+def draw():
+    """Процедура для отрисовки клеток."""
+    step()
+    turtle.clear()
+    for (x, y), alive in cells.items():
+        color = 'black' if alive else 'white'
+        cell(x, y, 10, color)
+    turtle.update()
+    turtle.ontimer(draw, 100)
 
 
 def step():
-    """Метод реализует процесс смены поколений(шагов) клеточных автоматов"""
+    """Процедура реализует процесс смены поколений (шагов) клеточных автоматов."""
     neighbours = {}  # словарь для определения соседских клеток
 
     for x in range(-290, 290, 10):
@@ -40,25 +46,20 @@ def step():
             cells[cell] = True
 
 
-def initialise():
-    """Метод для случайной инциализации координат клеточных автоматов"""
-    for x in range(-300, 300, 10):
-        for y in range(-300, 300, 10):
-            cells[x, y] = False
-    for x in range(-50, 50, 10):
-        for y in range(-50, 50, 10):
-            cells[x, y] = choice([True, False])
+def cell(x, y, size, name):
+    """Функция для создания клеточных автоматов.
 
-
-def draw():
-    """Метод для отрисовки клеток"""
-    step()
-    turtle.clear()
-    for(x, y), alive in cells.items():
-        color = 'black' if alive else 'white'
-        cell(x, y, 10, color)
-    turtle.update()
-    turtle.ontimer(draw, 100)
+    На вход принимаются координаты ячеек, длинна шага
+    и имя ячейки(цвет) в зависмости от заданной роли(мертвая/живая)"""
+    turtle.up()
+    turtle.goto(x, y)
+    turtle.down()
+    turtle.color(name)
+    turtle.begin_fill()
+    for count in range(4):
+        turtle.forward(size)
+        turtle.left(90)
+    turtle.end_fill()
 
 
 if __name__ == '__main__':
@@ -66,6 +67,6 @@ if __name__ == '__main__':
     turtle.setup(500, 500)
     turtle.hideturtle()
     turtle.tracer(False)
-    initialise()
+    initialize()
     draw()
     turtle.done()
